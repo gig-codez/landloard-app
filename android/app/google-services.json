@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "796753348394",
+    "project_id": "nyumba-yo-app",
+    "storage_bucket": "nyumba-yo-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:796753348394:android:20e44077816b9bee904053",
+        "android_client_info": {
+          "package_name": "com.app.landlord"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "796753348394-sefklskmfo3pipugvalgdjpsp212adr8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl6qbbzlCZ1Sp3bIDnRnZXzK4a8Cn45NE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "796753348394-sefklskmfo3pipugvalgdjpsp212adr8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
