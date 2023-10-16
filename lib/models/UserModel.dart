@@ -1,8 +1,4 @@
-// To parse this JSON data, do
-//
-//     final landlordModel = landlordModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 LandlordModel landlordModelFromJson(String str) => LandlordModel.fromJson(json.decode(str));

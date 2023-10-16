@@ -1,8 +1,3 @@
-// To parse this JSON data, do
-//
-//     final tenantsModel = tenantsModelFromJson(jsonString);
-
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 List<TenantsModel> tenantsModelFromJson(String str) => List<TenantsModel>.from(json.decode(str).map((x) => TenantsModel.fromJson(x)));

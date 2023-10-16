@@ -1,10 +1,4 @@
-// ignore_for_file: file_names
 
-// To parse this JSON data, do
-//
-//     final propertiesModel = propertiesModelFromJson(jsonString);
-
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 List<PropertiesModel> propertiesModelFromJson(String str) => List<PropertiesModel>.from(json.decode(str).map((x) => PropertiesModel.fromJson(x)));
