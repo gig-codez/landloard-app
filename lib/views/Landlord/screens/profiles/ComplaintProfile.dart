@@ -119,7 +119,7 @@ class _ComplaintProfileState extends State<ComplaintProfile>
                     ),
                 
                     StreamBuilder(
-                      stream: FirebaseFirestore.instance.collection("complaints").doc(widget.id).snapshots(),
+                      stream: Stream.empty(),//FirebaseFirestore.instance.collection("complaints").doc(widget.id).snapshots(),
                       builder: (context, snapshot) {
                         return snapshot.hasData ? snapshot.data!.data()!['status'] == 'Pending'? Padding(
                           padding: const EdgeInsets.all(18.0),

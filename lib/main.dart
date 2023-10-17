@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:nyumbayo_app/tools/index.dart';
 
@@ -24,6 +26,14 @@ Future<void> main() async {
   );
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+  );
+  messaging.requestPermission().then((value) {
+    log("Enabled");
+  });
+  messaging.setForegroundNotificationPresentationOptions(
+    alert: true, // Required to display a heads up notification
+    badge: true,
+    sound: true,
   );
   // initialize app notifications
   initializeNotifications();

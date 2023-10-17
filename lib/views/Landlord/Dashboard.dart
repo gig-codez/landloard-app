@@ -15,14 +15,16 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     super.initState();
     context.read<UserdataController>().getUserData();
+     // fetching property id
+    BlocProvider.of<PropertyIdController>(context).getPropertyId();
     // fetching tenants
-    BlocProvider.of<TenantController>(context)
-        .fetchTenants(context.read<PropertyIdController>().state);
+    BlocProvider.of<TenantController>(context).fetchTenants(
+        context.read<UserdataController>().state,
+        context.read<PropertyIdController>().state);
     // fetching property
     BlocProvider.of<PropertyController>(context)
         .fetchProperties(context.read<UserdataController>().state);
-    // fetching property id
-    BlocProvider.of<PropertyIdController>(context).getPropertyId();
+   
     // setting the amount
     Provider.of<MainController>(context, listen: false)
         .setAmount(context.read<PropertyIdController>().state);
@@ -32,8 +34,11 @@ class _DashboardState extends State<Dashboard> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     context.read<UserdataController>().getUserData();
-    BlocProvider.of<TenantController>(context)
-        .fetchTenants(context.read<PropertyIdController>().state);
+     // fetching property id
+    BlocProvider.of<PropertyIdController>(context).getPropertyId();
+    BlocProvider.of<TenantController>(context).fetchTenants(
+        context.read<UserdataController>().state,
+        context.read<PropertyIdController>().state);
     BlocProvider.of<PropertyController>(context)
         .fetchProperties(context.read<UserdataController>().state);
     Provider.of<MainController>(context, listen: false)
@@ -65,13 +70,15 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     context.read<UserdataController>().getUserData();
-    BlocProvider.of<TenantController>(context, listen: true)
-        .fetchTenants(context.read<PropertyIdController>().state);
+    // fetching property id
+    BlocProvider.of<PropertyIdController>(context).getPropertyId();
+
+    BlocProvider.of<TenantController>(context, listen: true).fetchTenants(
+        context.read<UserdataController>().state,
+        context.read<PropertyIdController>().state);
 // fetching property
     BlocProvider.of<PropertyController>(context)
         .fetchProperties(context.read<UserdataController>().state);
-// fetching property id
-    BlocProvider.of<PropertyIdController>(context).getPropertyId();
 
     Provider.of<MainController>(context, listen: true)
         .setAmount(context.read<PropertyIdController>().state);
@@ -160,10 +167,11 @@ class _DashboardState extends State<Dashboard> {
         ],
       ),
       body: StreamBuilder(
-          stream: FirebaseFirestore.instance
-              .collection('complaints')
-              .orderBy('date', descending: true)
-              .snapshots(),
+        stream:Stream.empty(),
+          // stream: FirebaseFirestore.instance
+          //     .collection('complaints')
+          //     .orderBy('date', descending: true)
+          //     .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               //  context.watch<MainController>().listenToNewComplaints(snapshot.data!);

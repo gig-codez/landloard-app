@@ -8,17 +8,18 @@ class Complaints extends StatefulWidget {
 }
 
 class _ComplaintsState extends State<Complaints> {
-  List<QueryDocumentSnapshot<Map<String, dynamic>>> pending = [];
+  List<dynamic> pending = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: NestedScrollView(
         body: StreamBuilder(
-          stream:
-              FirebaseFirestore.instance.collection('complaints').snapshots(),
+          stream: Stream.empty(),
           builder: (context, snapshot) {
-            if(snapshot.hasData){
-             pending = snapshot.data!.docs.where((element) => element.data()['status'] == "Pending").toList();
+            if (snapshot.hasData) {
+              pending = snapshot.data!.docs
+                  .where((element) => element.data()['status'] == "Pending")
+                  .toList();
             }
             return snapshot.connectionState == ConnectionState.waiting
                 ? const Loader(
@@ -34,16 +35,14 @@ class _ComplaintsState extends State<Complaints> {
                           return ListTile(
                             leading: ClipRRect(
                               child: Image.memory(
-                                base64Decode(
-                                    pending[index]['image']),
+                                base64Decode(pending[index]['image']),
                                 height: 40,
                                 width: 40,
                                 fit: BoxFit.cover,
                               ),
                             ),
                             title: Text(pending[index]['title']),
-                            subtitle:
-                                Text(pending[index]['description']),
+                            subtitle: Text(pending[index]['description']),
                             trailing: Text(pending[index]['']),
                           );
                         });

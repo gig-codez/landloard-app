@@ -28,7 +28,7 @@ class _ViewReportsState extends State<ViewReports>
     _controller.dispose();
     super.dispose();
   }
-  List<QueryDocumentSnapshot<Map<String, dynamic>>> pending = [];
+  List<dynamic> pending = [];
 
   EdgeInsets padding =
       const EdgeInsets.only(top: 5, right: 15, left: 15, bottom: 2);
@@ -50,11 +50,12 @@ class _ViewReportsState extends State<ViewReports>
             ),
             Expanded(
               child: StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection("complaints")
-                    .where("property_id",
-                        isEqualTo: context.read<PropertyIdController>().state)
-                    .snapshots(),
+                stream:Stream.empty(),
+                // stream: FirebaseFirestore.instance
+                //     .collection("complaints")
+                //     .where("property_id",
+                //         isEqualTo: context.read<PropertyIdController>().state)
+                //     .snapshots(),
                 builder: (context, snap) {
                           if(snap.hasData){
              pending = snap.data!.docs.where((element) => element.data()['status'] == "Pending").toList();

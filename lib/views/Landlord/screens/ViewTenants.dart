@@ -23,16 +23,24 @@ class _ViewTenantsState extends State<ViewTenants>
       duration: const Duration(milliseconds: 900),
     );
     _controller.forward();
-    BlocProvider.of<TenantController>(context)
-        .fetchTenants(context.read<PropertyIdController>().state);
+    // fetching property id
+    BlocProvider.of<PropertyIdController>(context).getPropertyId();
+    // fetching property id
+    BlocProvider.of<UserdataController>(context).getUserData();
+    BlocProvider.of<TenantController>(context).fetchTenants(
+        context.read<UserdataController>().state,
+        context.read<PropertyIdController>().state);
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    // fetching property id
+    BlocProvider.of<UserdataController>(context).getUserData();
     BlocProvider.of<PropertyIdController>(context).getPropertyId();
-    BlocProvider.of<TenantController>(context)
-        .fetchTenants(context.read<PropertyIdController>().state);
+    BlocProvider.of<TenantController>(context).fetchTenants(
+        context.read<UserdataController>().state,
+        context.read<PropertyIdController>().state);
   }
 
   @override
@@ -56,7 +64,8 @@ class _ViewTenantsState extends State<ViewTenants>
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<PropertyIdController>(context).getPropertyId();
-
+    // fetching property id
+    BlocProvider.of<UserdataController>(context).getUserData();
     return Scaffold(
       body: BottomTopMoveAnimationView(
         animationController: _controller,

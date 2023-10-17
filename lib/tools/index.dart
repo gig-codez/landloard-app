@@ -81,16 +81,16 @@ void resolveComplaint(String option, List<TextEditingController> controllers,
 // function to turn on or off power from tenant.
 void handleIssue(
     String id,String complaintId, String powerStatus, String complaintStatus, String msg) async {
-  await FirebaseFirestore.instance
-      .collection("tenants")
-      .doc(id)
-      .update({'power_status': powerStatus});
-      debugPrint("complaint status: $complaintStatus");
-  // resolve complaint.
-  await FirebaseFirestore.instance
-      .collection("complaints")
-      .doc(complaintId)
-      .update({'status': complaintStatus, 'reason': msg});
+  // await FirebaseFirestore.instance
+  //     .collection("tenants")
+  //     .doc(id)
+  //     .update({'power_status': powerStatus});
+  //     debugPrint("complaint status: $complaintStatus");
+  // // resolve complaint.
+  // await FirebaseFirestore.instance
+  //     .collection("complaints")
+  //     .doc(complaintId)
+  //     .update({'status': complaintStatus, 'reason': msg});
 }
 
 // initializing local notifications
@@ -177,7 +177,7 @@ void sendNotification(
 
 // logic to listen to new camplaints submitted
 // Assuming you have a Firestore instance set up
-final firestoreInstance = FirebaseFirestore.instance;
+// final firestoreInstance = FirebaseFirestore.instance;
 
 
 

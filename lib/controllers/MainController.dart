@@ -2,8 +2,6 @@
 
 import '../models/Complaints.dart';
 import '/backend/complaints.dart';
-
-import '../tools/index.dart';
 import '/exports/exports.dart';
 
 class MainController extends ChangeNotifier {
@@ -54,41 +52,5 @@ class MainController extends ChangeNotifier {
     _tenantId = id;
     notifyListeners();
   }
-// Listen for new complaints
 
-// Track the last complaint document ID
-  String lastDocumentId = "";
-
-// Listen for new complaints
-  void listenToNewComplaints(QuerySnapshot<Map<String, dynamic>> snapshot) {
-    // firestoreInstance
-    //     .collection('complaints')
-    //     .orderBy('date', descending: true)
-    //     .snapshots()
-    //     .listen((snapshot) {
-    for (var docChange in snapshot.docChanges) {
-      if (docChange.doc.data()!["accessKey"] == '0') {
-        if (docChange.type == DocumentChangeType.added) {
-          // Check if this is a new complaint
-          // Handle new complaint notification
-          String msg = docChange.doc.data()!['title'];
-          // trigger a notification showing who sent it
-          FirebaseFirestore.instance
-              .collection("complaints")
-              .doc(docChange.doc.id)
-              .update({
-            'accessKey': '1',
-          });
-
-          sendNotification(
-              body: msg, title: 'New Complaint', notification_id: 1);
-          // Display a notification or perform any desired action
-          // to notify the landlord about the new complaint
-          // Update the last complaint document ID
-          lastDocumentId = docChange.doc.id;
-        }
-      }
-    }
-    // });
-  }
 }

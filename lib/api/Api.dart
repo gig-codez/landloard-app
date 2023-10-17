@@ -1,14 +1,14 @@
-import 'package:nyumbayo_app/exports/exports.dart';
+import '/exports/exports.dart';
 
 class Api {
-  static const String devUrl = "http://192.168.0.37:4045";
+  static const String devUrl = "http://10.225.70.10:4045";
   static String adminLogin = "$devUrl/auth/login/landlord";
   static String adminCreate = "$devUrl/auth/create/landlord";
   static String addProperty = "$devUrl/post/create/property";
   static String properties = "$devUrl/get/landlord/property/";
   static String complaints = "$devUrl/get/complaints";
   static String saveTenant = "$devUrl/auth/create/tenant";
-  static String tenants = "$devUrl/get/tenants/";
+  static String tenants = "$devUrl/get/landlord/tenants/";
   static String powerApi =
       "https://api.thingspeak.com/update.json?api_key=EIGVFVMPGBKK86VQ&field1=";
   // function to trigger the power

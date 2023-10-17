@@ -23,7 +23,7 @@ class _ViewResolvedReportsState extends State<ViewResolvedReports>
     _controller.forward();
   }
 
-  List<QueryDocumentSnapshot<Map<String, dynamic>>> resolved = [];
+  List<dynamic> resolved = [];
 
   @override
   void dispose() {
@@ -51,11 +51,12 @@ class _ViewResolvedReportsState extends State<ViewResolvedReports>
             ),
             Expanded(
               child: StreamBuilder(
-                stream: FirebaseFirestore.instance
-                    .collection("complaints")
-                    .where("property_id",
-                        isEqualTo: context.read<PropertyIdController>().state)
-                    .snapshots(),
+                stream: Stream.empty(),
+                // stream: FirebaseFirestore.instance
+                //     .collection("complaints")
+                //     .where("property_id",
+                //         isEqualTo: context.read<PropertyIdController>().state)
+                //     .snapshots(),
                 builder: (context, snap) {
                   if (snap.hasData) {
                     resolved = snap.data!.docs

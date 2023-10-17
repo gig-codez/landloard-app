@@ -1,6 +1,6 @@
 import '/exports/exports.dart';
 class PropertyIdController extends Cubit<String> {
-  PropertyIdController() : super("Select a property");
+  PropertyIdController() : super("");
 
     //  FirebaseFirestore.instance.collection("properties").get()
   void setPropertyId(String id) {

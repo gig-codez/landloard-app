@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:nyumbayo_app/exports/exports.dart';
+import '/exports/exports.dart';
 
 class MonthlyCollection {
   final String property;
@@ -144,15 +144,15 @@ class _MonthlyPropertyCollectionState extends State<MonthlyPropertyCollection> {
   Widget build(BuildContext context) {
     List<MonthlyCollection> collectionData = [];
 
-    FirebaseFirestore.instance
-        .collection("property")
-        .doc(context.read<PropertyIdController>().state)
-        .get()
-        .then((value) {
-      setState(() {
-        x = value.data()?['name'] ?? "";
-      });
-    });
+    // FirebaseFirestore.instance
+    //     .collection("property")
+    //     .doc(context.read<PropertyIdController>().state)
+    //     .get()
+    //     .then((value) {
+    //   setState(() {
+    //     x = value.data()?['name'] ?? "";
+    //   });
+    // });
 
     return Scaffold(
       appBar: AppBar(
@@ -161,11 +161,12 @@ class _MonthlyPropertyCollectionState extends State<MonthlyPropertyCollection> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: StreamBuilder(
-            stream: FirebaseFirestore.instance
-                .collection('payments')
-                .where("property",
-                    isEqualTo: context.read<PropertyIdController>().state)
-                .snapshots(),
+          stream: Stream.empty(),
+            // stream: FirebaseFirestore.instance
+            //     .collection('payments')
+            //     .where("property",
+            //         isEqualTo: context.read<PropertyIdController>().state)
+            //     .snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
                 return const Loader(text: "monthly collections");

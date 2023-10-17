@@ -140,11 +140,12 @@ class _TenantChartScreenState extends State<TenantChartScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: StreamBuilder(
-            stream: FirebaseFirestore.instance
-                .collection('tenants')
-                .where("property",
-                    isEqualTo: context.read<PropertyIdController>().state)
-                .snapshots(),
+          stream:Stream.empty(),
+            // stream: FirebaseFirestore.instance
+            //     .collection('tenants')
+            //     .where("property",
+            //         isEqualTo: context.read<PropertyIdController>().state)
+            //     .snapshots(),
             builder: (context, snapshot) {
               if (!snapshot.hasData) {
                 return const Loader(text: "Disconnection data",);

@@ -3,8 +3,8 @@ import '../models/TenantsModel.dart';
 import '/exports/exports.dart';
 
 class TenantData {
-  static Future<List<TenantsModel>> fetchTenants(String id) async {
-  var response = await Client().get(Uri.parse(Api.tenants + id));
+  static Future<List<TenantsModel>> fetchTenants(String id, String property) async {
+  var response = await Client().get(Uri.parse("${Api.tenants}$id/$property"));
   return tenantsModelFromJson(response.body);
   }
 

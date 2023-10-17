@@ -1,6 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-
 import '../../exports/exports.dart';
 
 class EmailVerificationView extends StatefulWidget {
@@ -17,30 +16,30 @@ class _EmailVerificationViewState extends State<EmailVerificationView> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    FirebaseAuth.instance.currentUser?.sendEmailVerification();
-    timer =
-        Timer.periodic(const Duration(seconds: 3), (_) => checkEmailVerified());
+    // FirebaseAuth.instance.currentUser?.sendEmailVerification();
+    // timer =
+    //     Timer.periodic(const Duration(seconds: 3), (_) => checkEmailVerified());
   }
 
-  checkEmailVerified() async {
-    await FirebaseAuth.instance.currentUser?.reload();
+  // checkEmailVerified() async {
+  //   await FirebaseAuth.instance.currentUser?.reload();
 
-    setState(() {
-      isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
-    });
+  //   setState(() {
+  //     isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+  //   });
 
-    if (isEmailVerified) {
-      Routes.named(context, Routes.login);
-      // TODO: implement your code after email verification
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Email Successfully Verified"),
-        ),
-      );
+  //   if (isEmailVerified) {
+  //     Routes.named(context, Routes.login);
+  //     // TODO: implement your code after email verification
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       const SnackBar(
+  //         content: Text("Email Successfully Verified"),
+  //       ),
+  //     );
 
-      timer?.cancel();
-    }
-  }
+  //     timer?.cancel();
+  //   }
+  // }
 
   @override
   void dispose() {
@@ -54,9 +53,8 @@ class _EmailVerificationViewState extends State<EmailVerificationView> {
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-       mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-        
           const SizedBox(height: 20),
           const Center(
             child: Text(
@@ -65,15 +63,20 @@ class _EmailVerificationViewState extends State<EmailVerificationView> {
               style: TextStyle(fontSize: 35, fontWeight: FontWeight.w400),
             ),
           ),
-          SizedBox(width: 200,height: 200,child:  SvgPicture.asset("assets/email_verify.svg"),),
+          SizedBox(
+            width: 200,
+            height: 200,
+            child: SvgPicture.asset("assets/email_verify.svg"),
+          ),
           const SizedBox(height: 8),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32.0),
             child: Center(
               child: Text(
-                'We have sent you an Email on  ${FirebaseAuth.instance.currentUser?.email}',
+                'We have sent you an Email on  ',
                 textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                style:
+                    const TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
               ),
             ),
           ),
@@ -97,16 +100,14 @@ class _EmailVerificationViewState extends State<EmailVerificationView> {
               child: const Text('Resend'),
               onPressed: () {
                 try {
-                  FirebaseAuth.instance.currentUser
-                      ?.sendEmailVerification().then((value) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text(
-                          'Email Verification resent successfully.',
-                        )
-                      )
-                    );
-                      });
+                  // FirebaseAuth.instance.currentUser
+                  //     ?.sendEmailVerification()
+                  //     .then((value) {
+                  //   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                  //       content: Text(
+                  //     'Email Verification resent successfully.',
+                  //   )));
+                  // });
                 } catch (e) {
                   debugPrint('$e');
                 }
