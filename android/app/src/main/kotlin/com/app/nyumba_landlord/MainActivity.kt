@@ -1,4 +1,4 @@
-package com.app.landlord
+package com.app.nyumba_landlord
 
 import io.flutter.embedding.android.FlutterActivity
 

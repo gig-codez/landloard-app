@@ -56,7 +56,7 @@ class _SignUpState extends State<SignUp> {
                 child: Text("Sign up",
                     style: Theme.of(context)
                         .textTheme
-                        .headline4!
+                        .bodyLarge!
                         .copyWith(fontSize: 30)),
               ),
               AspectRatio(
@@ -227,7 +227,7 @@ class _SignUpState extends State<SignUp> {
                     Text("Already have an account  |",
                         style: Theme.of(context)
                             .textTheme
-                            .bodyText1!
+                            .bodyMedium!
                             .copyWith(color: Colors.black)),
                     TextButton(
                       onPressed: () => Routes.routeUntil(context, Routes.login),

@@ -6,7 +6,7 @@ class AppThemes {
   static ThemeData get lightTheme => ThemeData(
         primaryColor: Colors.blueAccent,
         primarySwatch: Colors.blue,
-        backgroundColor: const Color.fromARGB(204, 9, 87, 139),
+        // backgroundColor: const Color.fromARGB(204, 9, 87, 139),
         highlightColor: Colors.white,
         cardColor: Colors.grey[200],
         scaffoldBackgroundColor: Colors.white,
@@ -17,7 +17,7 @@ class AppThemes {
   static ThemeData get darkTheme => ThemeData(
         primaryColor: Colors.blueAccent,
         primarySwatch: Colors.blue,
-        backgroundColor: Colors.black,
+        // backgroundColor: Colors.black,
         highlightColor: Colors.blueAccent,
         brightness: Brightness.dark,
       );

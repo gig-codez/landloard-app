@@ -31,7 +31,7 @@ class _LoginState extends State<Login> {
                 child: Text("Login",
                     style: Theme.of(context)
                         .textTheme
-                        .headline4!
+                        .bodyLarge!
                         .copyWith(fontSize: 30)),
               ),
               AspectRatio(
@@ -100,19 +100,8 @@ class _LoginState extends State<Login> {
                         type: 'danger');
                   } else if (passwordController.text.isNotEmpty &&
                       emailController.text.isNotEmpty) {
-                    Auth.signinLandlord(emailController.text,
-                            passwordController.text, context)
-                        .then((value) {
-                      Routes.pop(context);
-                      Routes.routeUntil(context, Routes.dashboard);
-                      
-                    }).whenComplete(() {
-                      showMessage(
-                        context: context,
-                        msg: "Logged in Successfully",
-                        type: 'success',
-                      );
-                    });
+                    Auth.signinLandlord(
+                        emailController.text, passwordController.text, context);
                   }
                 },
               ),
@@ -124,7 +113,7 @@ class _LoginState extends State<Login> {
                     Text("Don't have account",
                         style: Theme.of(context)
                             .textTheme
-                            .bodyText1!
+                            .bodyMedium!
                             .copyWith(color: Colors.black)),
                     TextButton(
                       onPressed: () {

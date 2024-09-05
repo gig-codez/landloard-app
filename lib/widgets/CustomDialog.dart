@@ -3,7 +3,8 @@
 import '../exports/exports.dart';
 
 class CustomDialog extends StatefulWidget {
-  const CustomDialog({super.key, 
+  const CustomDialog({
+    super.key,
     required this.title,
     this.description = '',
     this.topWidget,
@@ -240,7 +241,7 @@ class CustomDialogActionButton extends StatelessWidget {
         height: 48,
         child: Text(
           buttonText,
-          style: Theme.of(context).textTheme.button!.copyWith(
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                 color: btnColor,
               ),
         ),
@@ -250,8 +251,7 @@ class CustomDialogActionButton extends StatelessWidget {
 }
 
 class CustomTopIconView extends StatelessWidget {
-  const CustomTopIconView({Key? key, required this.topWidget, this.bgColor})
-      : super(key: key);
+  const CustomTopIconView({super.key, required this.topWidget, this.bgColor});
 
   final Widget topWidget;
   final Color? bgColor;

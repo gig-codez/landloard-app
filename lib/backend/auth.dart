@@ -20,14 +20,21 @@ class Auth {
         Uri.parse(Api.adminLogin),
         body: {"email": email, "password": password, "fcm_token": userFCM},
       );
+      Map<String, dynamic> data = json.decode(response.body);
+
       if (response.statusCode == 200) {
-        Map<String, dynamic> data = json.decode(response.body);
         BlocProvider.of<UserdataController>(context)
             .captureData(data["data"]["userId"]);
         SessionManager().storeToken(data["data"]["token"]);
+        Routes.pop(context);
+        Routes.routeUntil(context, Routes.dashboard);
         showMessage(context: context, msg: data["message"], type: 'success');
+      } else {
+        Routes.pop(context);
+        showMessage(context: context, msg: data["message"], type: 'danger');
       }
     } on ClientException catch (e, _) {
+      Routes.pop(context);
       msg = e.message;
       showMessage(context: context, msg: msg, type: 'warning');
     }

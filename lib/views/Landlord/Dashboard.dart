@@ -15,7 +15,7 @@ class _DashboardState extends State<Dashboard> {
   void initState() {
     super.initState();
     context.read<UserdataController>().getUserData();
-     // fetching property id
+    // fetching property id
     BlocProvider.of<PropertyIdController>(context).getPropertyId();
     // fetching tenants
     BlocProvider.of<TenantController>(context).fetchTenants(
@@ -24,7 +24,7 @@ class _DashboardState extends State<Dashboard> {
     // fetching property
     BlocProvider.of<PropertyController>(context)
         .fetchProperties(context.read<UserdataController>().state);
-   
+
     // setting the amount
     Provider.of<MainController>(context, listen: false)
         .setAmount(context.read<PropertyIdController>().state);
@@ -34,7 +34,7 @@ class _DashboardState extends State<Dashboard> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     context.read<UserdataController>().getUserData();
-     // fetching property id
+    // fetching property id
     BlocProvider.of<PropertyIdController>(context).getPropertyId();
     BlocProvider.of<TenantController>(context).fetchTenants(
         context.read<UserdataController>().state,
@@ -53,18 +53,19 @@ class _DashboardState extends State<Dashboard> {
 // property variable
   String? selectedProperty;
   void getPropertyName(String id) {
-    if (id == "") {
+    // if (id == "") {
+    setState(() {
       property = "Select a property";
-    } else {
-      var p = BlocProvider.of<PropertyController>(context)
-          .state
-          .where((element) => element.id == id)
-          .first;
-
-      setState(() {
-        property = p.name;
-      });
-    }
+    });
+    // } else {
+    //   var p = BlocProvider.of<PropertyController>(context)
+    //       .state
+    //       .where((element) => element.id == id)
+    //       .first;
+    //   setState(() {
+    //     property = p.name;
+    //   });
+    // }
   }
 
   @override
@@ -167,7 +168,7 @@ class _DashboardState extends State<Dashboard> {
         ],
       ),
       body: StreamBuilder(
-        stream:Stream.empty(),
+          stream: Stream.empty(),
           // stream: FirebaseFirestore.instance
           //     .collection('complaints')
           //     .orderBy('date', descending: true)

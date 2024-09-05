@@ -1,7 +1,7 @@
 import '/exports/exports.dart';
 
 class Api {
-  static const String devUrl = "http://10.225.70.10:4045";
+  static const String devUrl = "http://15.237.71.190:4045";
   static String adminLogin = "$devUrl/auth/login/landlord";
   static String adminCreate = "$devUrl/auth/create/landlord";
   static String addProperty = "$devUrl/post/create/property";
